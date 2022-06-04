@@ -1,0 +1,14 @@
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+    
+{% block ContenidoVariable %}
+
+<h1>Registro de usuario</h1>
+<div class="form-group">
+    <form method="POST">{% csrf_token %}
+        {{ formulario.as_p }}
+        <button type="submit">Registrarse</button>
+    </form>
+</div>
+{% endblock %}

@@ -19,6 +19,6 @@ from AppBlog.views import inicio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('AppBlog/',include('AppBlog.urls')),
+    path('',include('AppBlog.urls')),
     path('',inicio),
 ]
