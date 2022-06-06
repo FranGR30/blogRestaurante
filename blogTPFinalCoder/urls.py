@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('AppBlog.urls')),
+    path('',include('mensajeria.urls')),
     path('',inicio),
 ]
 

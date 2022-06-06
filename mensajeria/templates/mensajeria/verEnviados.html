@@ -1,0 +1,28 @@
+{% extends "AppBlog/padre.html" %}
+{% load static %}
+
+{% block ContenidoVariable %}
+<div style="color:black">
+<h2>Mensajes enviados:</h2>
+    <div style="font-style:italic; font-size:15px">
+   
+    
+        {% for m in mensajes %}
+        <p style="border: ridge black 2px;">
+        De: {{m.remitente_usuario}}
+        <br>
+        Para: 
+        {{m.destinatario_usuario}}
+        <br>
+        Mensaje:
+        {{m.mensaje}}
+        <br>
+        </p>
+        {% endfor %} 
+        </p>
+    </div>
+
+</div>
+<a href="javascript:history.go(-1);">Volver atrás</a>
+<div>  
+{% endblock %}

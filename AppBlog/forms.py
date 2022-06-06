@@ -32,7 +32,7 @@ class CrearRestaurante(forms.Form):
     calificacion = forms.IntegerField(label='Calificacion',required=False)
     tipoDeComida = forms.CharField(label='Tipo de comida')
     categoriaPrecio = forms.CharField(label='Precios')
-    comentario = forms.CharField(label='Que te parecio el lugar?',required=False)
+    comentario = forms.CharField(label='Que te parecio el lugar?',required=False,widget=forms.Textarea)
     imagen = forms.ImageField(label='Imagen')
 
 class EditPost(forms.Form):

@@ -45,7 +45,8 @@ def iniciarSesion(request):
             user = authenticate(username = usuario, password = clave)
             if user is not None:
                 login(request,user)
-                return render(request,'AppBlog/index.html',{'usuario':usuario,'mensaje':'Bienvenido al sistema'})
+                avatar = Avatar.objects.filter(user=request.user)
+                return render(request,'AppBlog/index.html',{'usuario':usuario,'mensaje':'Bienvenido al sistema','url':avatar[0].avatar.url})
             else:
                 return render(request,'AppBlog/login.html',{'formulario':formulario,'mensaje':'Usuario incorrecto, vuelva a loguearse'})
         else:
@@ -152,3 +153,8 @@ def crearPost(request):
     else:
         formulario = CrearRestaurante()
     return render(request, 'AppBlog/crearPost.html',{'url':avatar[0].avatar.url,'formulario':formulario})
+
+@login_required
+def mensajeria(request):
+    avatar = Avatar.objects.filter(user=request.user)
+    return render(request, 'AppBlog/mensajeria.html',{'url':avatar[0].avatar.url})

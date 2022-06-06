@@ -28,10 +28,18 @@
                 </div>
                 {% else %}
                 <p>Bienvenido {{user}}! <img src="{{url}}" alt="" style="width: 40px;height: 40px;"></p>
-                <a class="btn btn-primary" href="{% url 'editarPerfil' %}">Editar perfil</a>
-                <a class="btn btn-primary" href="{% url 'agregarAvatar' %}">Agregar avatar</a>
-                <a class="btn btn-primary" href="{% url 'crearPost' %}">Crear Post</a>
-                <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Perfil
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'editarPerfil' %}">Editar perfil</a></li>
+                      <li><a class="dropdown-item" href="{% url 'mensajeria' %}">Mensajeria</a></li>
+                      <li><a class="dropdown-item" href="{% url 'agregarAvatar' %}">Agregar avatar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'crearPost' %}">Crear Post</a></li>
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                  </div>
                 {% endif %}
             </div>
         </nav>

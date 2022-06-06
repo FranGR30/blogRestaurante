@@ -1,0 +1,20 @@
+{% extends "AppBlog/padre.html" %}
+{% load static %}
+
+{% block ContenidoVariable %}
+
+
+<h1 style="color:white">Nuestros usuarios:</h1>
+<div style="color:white">
+    {% for u in object_list %}
+
+            <td>
+                <a href="{% url 'enviarMensaje' u.id %}">{{u.username}}</a>
+                 </li>
+        
+    {% endfor %} 
+</div>    
+
+{% endblock %}
+
+

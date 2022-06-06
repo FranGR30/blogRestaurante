@@ -18,27 +18,33 @@
             </tr>
         </thead>
         <tbody>
-            {% for Restaurante in restaurantes %}
-            <tr>
-                <td>{{ Restaurante.nombre }}</td>
-                <td>{{ Restaurante.calificacion }}</td>
-                <td>{{ Restaurante.tipoDeComida }}</td>
-                <td>{{ Restaurante.categoriaPrecio }}</td>
-                <td>{{ Restaurante.direccion }}</td>
-                {% if Restaurante.imagen %}
-                    <td>
-                        <img src="{{ Restaurante.imagen.url }}" alt="" style="width: 100px;height: 100px;">
-                    </td>
-                {% else %}
-                    <td>
-                        <img src="{% static 'AppBlog/assets/img/icono.png' %}" alt="" style="width: 100px;height: 100px;" >
-                    </td>
-                {% endif %}
-                <td>
-                    <a href="{% url 'mostrarRestaurante' Restaurante.id %}" class="btn btn-danger">Ver</a>
-                </td>
-            </tr>
-            {% endfor %}
+            {% if restaurantes %}
+                {% for Restaurante in restaurantes %}
+                    <tr>
+                        <td>{{ Restaurante.nombre }}</td>
+                        <td>{{ Restaurante.calificacion }}</td>
+                        <td>{{ Restaurante.tipoDeComida }}</td>
+                        <td>{{ Restaurante.categoriaPrecio }}</td>
+                        <td>{{ Restaurante.direccion }}</td>
+                        {% if Restaurante.imagen %}
+                            <td>
+                                <img src="{{ Restaurante.imagen.url }}" alt="" style="width: 100px;height: 100px;">
+                            </td>
+                        {% else %}
+                            <td>
+                                <img src="{% static 'AppBlog/assets/img/icono.png' %}" alt="" style="width: 100px;height: 100px;" >
+                            </td>
+                        {% endif %}
+                        <td>
+                            <a href="{% url 'mostrarRestaurante' Restaurante.id %}" class="btn btn-danger">Ver</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7">No hay restaurantes</td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 </div>  

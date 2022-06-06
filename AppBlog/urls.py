@@ -16,5 +16,6 @@ urlpatterns = [
     path('eliminarPost/<str:pk>',eliminarPost, name='eliminarPost'),
     path('editarPost/<str:pk>',editarPost, name='editarPost'),
     path('crearPost',crearPost, name='crearPost'),
+    path('mensajeria/mensajeria',mensajeria, name='mensajeria'),
 ]
 

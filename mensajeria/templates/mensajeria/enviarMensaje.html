@@ -1,0 +1,26 @@
+{% extends "AppBlog/padre.html" %}
+{% load static %}
+
+{% block ContenidoVariable %}
+<a href="javascript:history.go(-1);">Volver atrás</a>
+<form action="{% url 'enviarMensaje' %}" method ="POST" id="contactForm">
+    {% csrf_token %}  
+    <div class="text-center">
+        <h1 class="section-heading text-uppercase">Enviar mensaje</h2>
+    </div>
+    <div class="row align-items-stretch mb-5" style="margin-left:32%">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <input class="form-control" name="destinatario" type="text" placeholder="Destinatario" data-sb-validations="required" value="{{destinatario_user}}"/>
+                <div class="invalid-feedback" data-sb-feedback="destinatario:required">Destinatario</div>
+            </div>
+            <div class="form-group">
+                <p><textarea name="mensaje" cols="40" rows="5"></textarea></p>              
+            </div>
+        </div>
+    </div>
+    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="enviarMensaje" type="submit">Enviar</button></div>
+</form>
+
+{% endblock %}

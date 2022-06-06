@@ -1,0 +1,41 @@
+{% extends "AppBlog/padre.html" %}
+{% load static %}
+
+{% block ContenidoVariable %}
+<div style="margin-bottom:60px">
+    <a class="btn btn-primary" href="{% url 'enviarMensaje' %}">ENVIAR MENSAJE</a>
+    <a class="btn btn-primary" href="{% url 'verEnviados' %}">MENSAJES ENVIADOS</a>
+    <a class="btn btn-primary" href="{% url 'verNoLeidos' %}">MENSAJES NO LEIDOS</a>
+</div>
+<div style="color:black">
+
+    
+<h2>Mis mensajes:</h2>
+    <div style="font-style:italic; font-size:15px">
+   
+        {% if mensajes %}
+        {% for m in mensajes %}
+        {% if m.visto == 'N' %}
+        <p style="border: ridge #FF5733 4px;">
+        {% else %}
+        <p style="border: ridge black 2px;">
+        {% endif %}
+        De: {{m.remitente_usuario}}
+        <br>
+        Para: 
+        {{request.user.username}}
+        <br>
+        Mensaje:
+        {{m.mensaje}}
+        <br>
+        </p>
+        {% endfor %} 
+
+    </div>
+        {% else %}
+        <div>Aun no tiene mensajes</div>
+        {% endif %}
+</div>
+
+<div>  
+{% endblock %}
