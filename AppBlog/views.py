@@ -157,4 +157,11 @@ def crearPost(request):
 @login_required
 def mensajeria(request):
     avatar = Avatar.objects.filter(user=request.user)
-    return render(request, 'AppBlog/mensajeria.html',{'url':avatar[0].avatar.url})
+    return render(request, 'mensajeria/mensajeria.html',{'url':avatar[0].avatar.url})
+
+def about(request):
+    if request.user.is_authenticated:
+        avatar = Avatar.objects.filter(user=request.user)
+        return render(request, 'AppBlog/about.html',{'url':avatar[0].avatar.url})
+    else:
+        return render(request, 'AppBlog/about.html')

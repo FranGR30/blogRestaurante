@@ -1,3 +1,4 @@
+from http.client import LENGTH_REQUIRED
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
@@ -26,10 +27,10 @@ class AvatarForm(forms.Form):
     avatar = forms.ImageField(label='Avatar')
 
 class CrearRestaurante(forms.Form):
-    nombre = forms.CharField(label='nombre del local')
+    nombre = forms.CharField(label='Nombre del local')
     direccion = forms.CharField(label='Direccion del local')
     telefono = forms.IntegerField(label='Telefono del local',required=False)
-    calificacion = forms.IntegerField(label='Calificacion',required=False)
+    calificacion = forms.IntegerField(label='Calificacion',required=False,max_value=10,min_value=0)
     tipoDeComida = forms.CharField(label='Tipo de comida')
     categoriaPrecio = forms.CharField(label='Precios')
     comentario = forms.CharField(label='Que te parecio el lugar?',required=False,widget=forms.Textarea)
