@@ -1,0 +1,16 @@
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+{% block ContenidoVariable %}
+
+<h1>Modificando perfil de {{restaurante.nombre}}</h1>
+
+<form  method="POST" action="{% url 'editarPost' restaurante.id %}">{% csrf_token %}
+    <table>
+        {{ formulario.as_table }}
+    </table>
+    <input type="submit" value="Editar">
+</form>
+
+{% endblock %}

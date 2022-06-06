@@ -1,5 +1,14 @@
+
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
+import os
+
+def filepath(request, filename):
+    old_filename = filename
+    timeNow = datetime.datetime.now().strftime('%d%m%Y%H:%M:%S')
+    filename = "%s%s" % (timeNow, old_filename)
+    return os.path.join('restaurante/', filename)
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=30)
@@ -17,7 +26,10 @@ class Restaurante(models.Model):
     calificacion = models.IntegerField()
     tipoDeComida = models.CharField(max_length=30)
     categoriaPrecio = models.CharField(max_length=30)
+    imagen = models.ImageField(upload_to=filepath, null=True,blank=True)
+    autor = models.TextField(max_length=50)
+    fecha = models.DateField()
 
 class Avatar(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to = 'avatar',blank = True,null = True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to='avatar', null=True,blank=True)

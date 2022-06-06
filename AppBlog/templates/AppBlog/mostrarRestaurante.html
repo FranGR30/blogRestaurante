@@ -1,0 +1,23 @@
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+    
+{% block ContenidoVariable %}
+<div class="container position-relative">
+
+<h1>{{ restauranteIndividual.nombre }}</h1>
+{% if restauranteIndividual.imagen %}
+    <p><img src="{{ restauranteIndividual.imagen.url }}" alt=""></p>
+{% else %}
+    <p><img src="{% static 'AppBlog/assets/img/icono.png' %}" alt=""></p>
+{% endif %}
+<p>Telefono: {{ restauranteIndividual.telefono }}</p>
+<p>Comentario: {{ restauranteIndividual.comentario }}</p>
+<p>autor: {{ restauranteIndividual.autor }}</p>
+<p>fecha: {{ restauranteIndividual.fecha }}</p>
+<div>
+    <a href="{% url 'eliminarPost' restauranteIndividual.id %}" class="btn btn-danger">Eliminar</a>
+    <a href="{% url 'editarPost' restauranteIndividual.id %}" class="btn btn-success">Editar</a>
+</div>
+</div>
+{% endblock %}

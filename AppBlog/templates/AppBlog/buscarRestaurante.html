@@ -1,0 +1,45 @@
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+    
+{% block ContenidoVariable %}
+
+<div class="container">
+    <table class="table table-bordered text-center">
+        <thead class="bg-primary text-light">
+            <tr>
+                <td>Nombre</td>
+                <td>Calificacion</td>
+                <td>Tipo de Comida</td>
+                <td>Precio</td>
+                <td>Direccion</td>
+                <td>Imagen</td>
+                <td>Accion</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Restaurante in restaurantes %}
+            <tr>
+                <td>{{ Restaurante.nombre }}</td>
+                <td>{{ Restaurante.calificacion }}</td>
+                <td>{{ Restaurante.tipoDeComida }}</td>
+                <td>{{ Restaurante.categoriaPrecio }}</td>
+                <td>{{ Restaurante.direccion }}</td>
+                {% if Restaurante.imagen %}
+                    <td>
+                        <img src="{{ Restaurante.imagen.url }}" alt="" style="width: 100px;height: 100px;">
+                    </td>
+                {% else %}
+                    <td>
+                        <img src="{% static 'AppBlog/assets/img/icono.png' %}" alt="" style="width: 100px;height: 100px;" >
+                    </td>
+                {% endif %}
+                <td>
+                    <a href="{% url 'mostrarRestaurante' Restaurante.id %}" class="btn btn-danger">Ver</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>  
+{% endblock %}

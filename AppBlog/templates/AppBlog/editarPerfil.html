@@ -2,11 +2,11 @@
 
 {% load static %}
 
-{% block ContenidoQueCambia %}
+{% block ContenidoVariable %}
 
 <h1>Modificando perfil de {{usuario}}</h1>
 
-<form action="{% url 'editarPerfil' %}" method="POST">{% csrf_token %}
+<form  method="POST" action="{% url 'editarPerfil' %}">{% csrf_token %}
     <table>
         {{ formulario.as_table }}
     </table>

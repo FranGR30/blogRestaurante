@@ -27,8 +27,10 @@
                 <a class="btn btn-primary" href="{% url 'register' %}">Sign Up</a>
                 </div>
                 {% else %}
-                <p>hola {{user}}</p>
+                <p>Bienvenido {{user}}! <img src="{{url}}" alt="" style="width: 40px;height: 40px;"></p>
                 <a class="btn btn-primary" href="{% url 'editarPerfil' %}">Editar perfil</a>
+                <a class="btn btn-primary" href="{% url 'agregarAvatar' %}">Agregar avatar</a>
+                <a class="btn btn-primary" href="{% url 'crearPost' %}">Crear Post</a>
                 <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
                 {% endif %}
             </div>
@@ -41,7 +43,7 @@
                         <div class="text-center text-white">
                             <!-- Page heading-->
                             <h1 class="mb-5">Donde Comemos?</h1>
-                            <a class="btn btn-danger btn-lg" href="#signup">Buscar</a>
+                            <a class="btn btn-danger btn-lg" href="{% url 'buscarRestaurante' %}">Buscar</a>
                             <!-- Signup form-->
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -94,7 +96,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="AppBlog/js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
